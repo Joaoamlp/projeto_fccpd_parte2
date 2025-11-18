@@ -1,0 +1,30 @@
+services:
+  apiGateway:
+    build:
+      context: ./APIGateway
+    image: apigateway   
+    container_name: api_gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - microservice_a
+      - microservice_b
+    networks:
+      - desafio5_net
+  microservice_a:
+    build:
+      context: ./serviceUsers
+    image: serviceusers          
+    container_name: ServiceUsers
+    networks:
+      - desafio5_net
+  microservice_b:
+    build:
+      context: ./serviceOrders
+    image: serviceorders        
+    container_name: ServiceOrders
+    networks:
+      - desafio5_net
+networks:
+  desafio5_net:
+    driver: bridge

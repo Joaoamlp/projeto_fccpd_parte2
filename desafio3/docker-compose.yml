@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  postgres_desafio3:
+    build:
+      context: ./db
+    container_name: postgres_desafio3
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: pokedb
+    volumes:
+      - ./db/data.sql:/docker-entrypoint-initdb.d/data.sql
+    networks:
+      - desafio3_net
+
+  redis_desafio3:
+    build:
+      context: ./cache
+    container_name: redis_desafio3
+    ports:
+      - "6379:6379"
+    networks:
+      - desafio3_net
+
+  app_desafio3:
+    build:
+      context: ./flask
+    container_name: app_desafio3
+    depends_on:
+      - postgres_desafio3
+      - redis_desafio3
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: postgres_desafio3
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: 123
+      DB_NAME: pokedb
+      CACHE_HOST: redis_desafio3
+      CACHE_PORT: 6379
+    networks:
+      - desafio3_net
+
+networks:
+  desafio3_net:
+    driver: bridge

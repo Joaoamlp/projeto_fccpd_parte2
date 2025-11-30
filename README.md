@@ -1,5 +1,85 @@
 # projeto_fccpd_parte2
 
+## Desafio 2
+
+### Objetivo 
+
+Nesse desafio o objetivo é testar a persistencia de volume. 
+
+### Ferramentas
+
+- Docker
+- SQL
+
+### Como rodar
+
+1. Construir a Imagem
+
+Utilize esse comando para construir a imagem
+
+``` bash
+docker build -t desafio2-db .
+
+```
+
+2. Rode o conteiners utilizando volume persistente
+
+```
+docker run -d \
+  --name desafio2_container \
+  -p 5433:5432 \
+  -v desafio2_volume:/var/lib/postgresql/data \
+  desafio2-db
+```
+Recomendodo usar wls para essa parte
+
+3. Conecte com conteiner que foi ligado ao banco de dados 
+
+```
+docker exec -it desafio2_container psql -U admin -d teste
+
+```
+
+4. Testando a conexão
+
+Utilize o comando SQL
+
+``` SQL
+SELECT * FROM pokemon;
+```
+
+E esperado uma lista com o nome de alguns pokemons
+
+5. Testar a persistencia
+
+5.1 - Remova o conteiner
+
+```
+docker rm -f desafio2_container
+``` 
+
+5.2 Criar um novo conteiner
+
+```
+docker run -d \
+  --name desafio2_container2 \
+  -p 5433:5432 \
+  -v desafio2_volume:/var/lib/postgresql/data \
+  desafio2-db
+
+```
+
+5.3 Confirir a permanência 
+
+```
+SELECT * FROM pokemon;
+```
+
+
+
+
+---
+
 ## Desafio 3
 
 ### Objetivo

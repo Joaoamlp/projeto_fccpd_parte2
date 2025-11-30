@@ -1,6 +1,50 @@
 # projeto_fccpd_parte2
 
-## Deaafio 4
+## Desafio 3
+
+### Objetivo
+
+Nesse desafio o objetivo é utilizar docker compose para construir multiplos serviços de uma vez
+
+### Ferramentas utilizadas
+
+- Docker
+- flask
+- posterqSQL
+- redis
+
+### Como rodar
+
+Lembre-se de estar no diretorio do desafio 3 seu cmd deve estar desse jeito
+
+```
+..\desafio3
+```
+
+1. Como rodar 
+
+Esse comando ira construir as imagens referenciadas no docker compose e a network que conecta ambos utilizando o build, e ja que possui um up ele tambem ira executar os conteiners desse docker compose.
+
+```
+docker compose up --build
+```
+
+2. Funcionamento via local host
+Utilize o comando do curl para utilizar o localhost.
+```
+curl http://localhost:8000
+```
+
+Caso queira ver os logs utilize o comando
+
+```
+docker compose logs -f app_desafio3
+```
+
+
+---
+
+## Desafio 4
 
 ### Objetivo
 
@@ -14,17 +58,17 @@ Nesse desafio o objetivo é conectar dois microservisos via um docker compose
 
 ### Como Rodar
 
-utilize esses comandos na raiz projeto desafio4, ou seja, seu termina deve estar assim 
+Lembre-se de estar no diretorio do desafio 3 seu cmd deve estar desse jeito
 
 ```
-pasta\desafio4
+..\desafio3
 ```
 
 1. Buildar o compose
 
-Esse comando ira construir as imagens referenciadas no docker compose e a network que conecta ambos utilizando o build, e ja que possui um up ele tambem ira executar os conteiners desse docker compose
+Esse comando ira construir as imagens referenciadas no docker compose e executar os conteiners em uma linha
 
-```bash
+``` bash
 
 docker compose up --build
 
@@ -34,13 +78,13 @@ docker compose up --build
 
 Utilize o comando para ver quais estão em execução 
 
-```bash
+``` bash
 docker ps 
 ```
 
 Utilize ambos os comandos tanto para micro_serviceA quando o B
 
-```bash
+``` bash
 docker compose logs -f microservice_a
 docker compose logs -f microservice_b
 
@@ -75,7 +119,7 @@ Utilizar um api gateway para controlar as requisições de dois microservisos.
 Lembre-se de estar no diretorio do desafio 5 seu cmd deve estar desse jeito
 
 ```
-pasta\desafio5
+..\desafio5
 ```
 1.Buildar o compose e executar os conteiners
 

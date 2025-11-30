@@ -16,6 +16,7 @@ pasta\desafio4
 ```
 
 1. Buildar o compose
+
 Esse comando ira construir as imagens referencias no docker compose e a network que conecta ambos utilizando o build, e ja que possui um up ele tambem ira subir os conteiners desse docker compose
 
 ```bash

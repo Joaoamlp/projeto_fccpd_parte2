@@ -1,7 +1,7 @@
-CREATE TABLE pessoas (
+CREATE TABLE pokemon (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(50)
 );
 
-INSERT INTO pessoas (nome) VALUES ('João'), ('Maria'), ('Ana');
+INSERT INTO pokemon (nome) VALUES ('Bulbasaur'), ('Ivysaur'), ('Venosaur');
 

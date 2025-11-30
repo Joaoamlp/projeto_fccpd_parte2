@@ -30,6 +30,7 @@ docker compose up --build
 ```
 
 2. Funcionamento via local host
+
 Utilize o comando do curl para utilizar o localhost.
 ```
 curl http://localhost:8000

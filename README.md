@@ -1,5 +1,85 @@
 # projeto_fccpd_parte2
 
+## Desafio 1 
+
+### Objetivo 
+
+Concectar dois conteirns via uma rede personalizavel
+
+### tecnologias 
+
+- Docker
+- Flask
+
+### Como rodar 
+
+Lembre-se de estar no diretorio do desafio 2 seu cmd deve estar desse jeito
+
+```
+..\desafio2
+```
+
+1. Crie a rede docker
+
+Utilize o comando para criar uma rede e nomeá-la
+
+```
+docker network create desafio-rede
+```
+2. Construa as imagens
+
+   Utilize esses comando para criar as imagens do docker 
+
+Servidor flask :
+```
+cd flask
+docker build -t flask-server .
+cd ..
+```
+
+Curl 
+
+```
+cd curl
+docker build -t curl-requester .
+cd ..
+```
+
+3. Execute os conteirns e conect com a rede
+
+Servidor Flask
+
+```
+docker run -d --name flask --network desafio-rede -p 8080:8080 flask-server
+```
+
+Curl : 
+
+```
+docker run -d --name requester --network desafio-rede curl-requester
+```
+4. Observer os logs
+
+Logs Flask 
+
+```
+docker logs -f flask
+```
+
+Logs  Curl
+```
+docker logs -f curl
+```
+
+teste manual 
+```
+curl http://localhost:8080/
+```
+
+
+
+---
+
 ## Desafio 2
 
 ### Objetivo 

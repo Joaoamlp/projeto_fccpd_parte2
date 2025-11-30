@@ -58,7 +58,6 @@ curl http://localhost:8001/   # chama microservice A (que por sua vez chama B in
 
 ---
 
-
 ## desafio5
 
 ### Objetivo

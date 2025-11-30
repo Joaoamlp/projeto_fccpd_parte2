@@ -6,6 +6,11 @@
 
 Nesse desafio o objetivo é conectar dois microservisos via um docker compose
 
+### Ferramentas utilizadas 
+
+-Docker
+-flask
+
 
 ### Como Rodar
 
@@ -50,6 +55,51 @@ curl http://localhost:8000/   # chama microservice B
 curl http://localhost:8001/   # chama microservice A (que por sua vez chama B internamente)
 
 ```
+
+---
+
+
+## desafio5
+
+### Objetivo
+
+Utilizar um api gateway para controlar as requisições de dois microservisos. 
+
+### Ferramentas
+
+- Docker
+- flask
+- nginx
+
+### Como Rodar 
+
+Lembre-se de estar no diretorio do desafio 5 seu cmd deve estar desse jeito
+
+```
+pasta\desafio5
+```
+1.Buildar o compose e executar os conteiners
+
+Utilize esse comando para buildar as imagens e subir os conteiners 
+
+``` bash
+docker compose up --build
+```
+
+## Testando o Gateway
+
+Utilize o esses comandos para testar o gateway
+
+```
+curl http://localhost:8080/users
+curl http://localhost:8080/orders
+```
+
+Se observarmos as portas dos serviços não estão expostas o que conclui que o gateway esta funcionando como deveria
+
+
+
+
 
 
 
